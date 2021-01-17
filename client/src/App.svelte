@@ -1,8 +1,6 @@
 <script>
 	import {onMount} from 'svelte';
 
-	let data = {};
-
 	async function addTag(tag) {
 	    const res = await fetch(`/api/tag?tag=${tag}` , {method: 'post'});
 	    const {id} = await res.json();
@@ -38,4 +36,3 @@
 </style>
 
 <h1>Hello world!</h1>
-<div>Data: {JSON.stringify(data)}</div>
