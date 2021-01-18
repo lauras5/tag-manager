@@ -15,7 +15,7 @@ const dbInfo = {
 
   const tagScopedRouter = getTagScopedRouter(dbInfo);
   const api = new Router();
-  api.use(tagScopedRouter.routes())
+  api.use('/api', tagScopedRouter.routes())
       .use(tagScopedRouter.allowedMethods())
 
   const app = new koa()
