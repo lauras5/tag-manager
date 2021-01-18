@@ -35,4 +35,6 @@
 	}
 </style>
 
-<h1>Hello world!</h1>
+<div class="border-2 border-blue-300 bg-red-200">
+    <h1>Hello world!</h1>
+</div>
