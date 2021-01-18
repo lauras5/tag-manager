@@ -1,6 +1,6 @@
 <script>
 	import {onMount} from 'svelte';
-	import {addTag, getTag, listTags, deleteTag} from 'sql-tag-system-koa-route';
+	import {addTag, getTag, listTags, deleteTag} from 'sql-tag-system-fetch-utils';
 
 	onMount(async () => {
 
