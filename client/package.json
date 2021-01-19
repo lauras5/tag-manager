@@ -18,7 +18,8 @@
     "webpack-dev-server": "^3.3.1"
   },
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack",
-    "dev": "webpack-dev-server --content-base public"
+    "watch:tailwind": "postcss public/tailwind.css -o public/index.css -w",
+    "build": "cross-env NODE_ENV=production webpack postcss public/tailwind.css -o public/index.css",
+    "dev": "concurrently \"webpack-dev-server --content-base public\" \"npm run watch:tailwind\""
   }
 }
