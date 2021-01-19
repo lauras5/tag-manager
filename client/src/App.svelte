@@ -7,9 +7,9 @@
     async function removeTag(tagId) {
         try {
             await deleteTag(tagId);
-            tags = await listTags();
+            tags = tags.filter(tag => tag.id !== tagId );
         } catch {
-            console.log('error loading tags')
+            console.log('error deleting tag')
         }
     }
 
