@@ -15,8 +15,7 @@
 
     async function addNewTag(tag) {
         let newTagId = await addTag(tag);
-        let newTagInfo = await getTag(newTagId);
-        tags = [...tags, newTagInfo];
+        tags = [...tags, { id:newTagId, tag:tag }];
         newTag = '';
     }
 
