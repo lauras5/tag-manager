@@ -8,53 +8,46 @@
         try {
             await deleteTag(tagId);
             tags = tags.filter(tag => tag.id !== tagId );
-        } catch {
-            console.log('error deleting tag')
+        } catch (e) {
+            console.log(`Error: ${e}`)
         }
     }
 
-    async function addNewTag(tag) {
-        let newTagId = await addTag(tag);
-        tags = [...tags, { id:newTagId, tag:tag }];
-        newTag = '';
+    async function handleAdd() {
+        if (newTag != '') {
+            try {
+                let newTagId = await addTag(newTag);
+                tags = [...tags, { id:newTagId, tag:newTag }];
+            } catch (e) {
+                console.log(`Error: ${e}`);
+            }
+
+            newTag = '';
+        }
     }
 
 	onMount(async () => {
 	    try {
-            let tags = await listTags();
-        } catch {
-	        console.log('error loading tags')
+	        let page = 0;
+	        let limit = 20;
+            let tags = await listTags(page, limit);
+        } catch (e) {
+	        console.log(`Error: ${e}`)
         }
     });
 
 </script>
 
-<style>
-    .tag {
-        border-radius: 20px;
-    }
-
-    .tag-delete {
-        border-radius:50%;
-        width: 25px;
-        height: 25px;
-        justify-content: center;
-        align-items: center;
-        display: flex;
-        line-height: 25px;
-    }
-</style>
-
 <div>
     <input class="new-tag-input" bind:value={newTag}>
-    <button class='btn new-tag-btn pl-4 pr-4 bg-gray-200' on:click={addNewTag(newTag)}>Add Tag</button>
+    <button class='pl-4 pr-4 bg-gray-200 rounded-2xl' on:click={handleAdd}>Add Tag</button>
 </div>
 
 <div class="tag-container flex flex-wrap">
     {#each tags as {id, tag}}
-        <div class='tag tag-card inline-flex m-2 bg-gray-200 p-1 pl-4 pr-1'>
+        <div class='inline-flex m-2 bg-gray-200 p-1 pl-4 pr-1 rounded-2xl'>
             <span>{tag}</span>
-            <span class="tag-delete ml-4 bg-gray-300" on:click={removeTag(id)}>x</span>
+            <span class="ml-4 bg-gray-300 rounded-full w-6 h-6 flex justify-center items-center leading-6 pb-0.5" on:click={removeTag(id)}>x</span>
         </div>
     {/each}
 </div>
