@@ -20,7 +20,8 @@
   },
   "scripts": {
     "watch:tailwind": "postcss public/tailwind.css -o public/index.css -w",
-    "build": "cross-env NODE_ENV=production webpack postcss public/tailwind.css -o public/index.css",
+    "build:tailwind": "cross-env NODE_ENV=production postcss public/tailwind.css -o public/index.css",
+    "build": "npm run build:tailwind && webpack-dev-server --content-base public",
     "dev": "concurrently \"webpack-dev-server --content-base public\" \"npm run watch:tailwind\""
   },
   "dependencies": {

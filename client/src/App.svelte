@@ -1,12 +1,10 @@
 <script>
 	import { onMount } from 'svelte';
 	import { addTag, listTags } from 'sql-tag-system-fetch-utils';
-    import TagComponent from './TagComponent.svelte';
+    import Tag from './Tag.svelte';
 
     let tags = [];
     let newTag = '';
-    let limit = 100;
-    let page = 0;
 
     async function getTags() {
         tags = await listTags();
@@ -23,11 +21,13 @@
             for (let tag of newTags) {
                 tag = tag.trim();
 
-                try {
-                    let newTagId = await addTag(tag);
-                    tags = [...tags, { id:newTagId, tag:tag }];
-                } catch (e) {
-                    console.log(`Error: ${e}`);
+                if (tag) {
+                    try {
+                        let newTagId = await addTag(tag);
+                        tags = [...tags, { id:newTagId, tag:tag }];
+                    } catch(err) {
+                        console.log(err);
+                    }
                 }
             }
 
@@ -36,7 +36,8 @@
     }
 
     async function handleLoadMore() {
-        page++;
+        let limit = 100;
+        let page = 0;
 
         let additionalTags = await listTags(page, limit);
         tags = [...tags, ...additionalTags];
@@ -51,7 +52,7 @@
     </div>
 
     <div class="tag-container flex items-start content-start flex-wrap mt-3 mb-15 overflow-auto">
-        <TagComponent {tags}></TagComponent>
+        <Tag {tags}></Tag>
     </div>
 
     <div class="fixed bottom-5 items-center w-screen flex justify-center items-center">
