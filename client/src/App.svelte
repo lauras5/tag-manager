@@ -1,5 +1,6 @@
 <script>
 	import {onMount} from 'svelte';
+	import { fade } from 'svelte/transition';
 	import {addTag, getTag, listTags, deleteTag} from 'sql-tag-system-fetch-utils';
     let tags = [];
     let newTag = '';
@@ -28,9 +29,7 @@
 
 	onMount(async () => {
 	    try {
-	        let page = 0;
-	        let limit = 20;
-            let tags = await listTags(page, limit);
+            tags = await listTags();
         } catch (e) {
 	        console.log(`Error: ${e}`)
         }
@@ -45,7 +44,7 @@
 
 <div class="tag-container flex flex-wrap">
     {#each tags as {id, tag}}
-        <div class='inline-flex m-2 bg-gray-200 p-1 pl-4 pr-1 rounded-2xl'>
+        <div transition:fade class='inline-flex m-2 bg-gray-200 p-1 pl-4 pr-1 rounded-2xl'>
             <span>{tag}</span>
             <span class="ml-4 bg-gray-300 rounded-full w-6 h-6 flex justify-center items-center leading-6 pb-0.5" on:click={removeTag(id)}>x</span>
         </div>
