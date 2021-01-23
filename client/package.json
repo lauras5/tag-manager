@@ -6,6 +6,7 @@
     "concurrently": "^5.3.0",
     "cross-env": "^5.2.1",
     "css-loader": "^2.1.1",
+    "fa-svelte": "^3.1.0",
     "mini-css-extract-plugin": "^0.6.0",
     "postcss-cli": "^8.3.1",
     "serve": "^11.0.0",
@@ -21,5 +22,8 @@
     "watch:tailwind": "postcss public/tailwind.css -o public/index.css -w",
     "build": "cross-env NODE_ENV=production webpack postcss public/tailwind.css -o public/index.css",
     "dev": "concurrently \"webpack-dev-server --content-base public\" \"npm run watch:tailwind\""
+  },
+  "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^5.15.2"
   }
 }
