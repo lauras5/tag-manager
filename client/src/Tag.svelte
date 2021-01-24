@@ -1,6 +1,6 @@
 <script>
     import { tags } from './stores.js';
-    import { deleteTag, listTags } from 'sql-tag-system-fetch-utils';
+    import { deleteTag } from 'sql-tag-system-fetch-utils';
     import { fade } from 'svelte/transition';
     import Icon from 'fa-svelte'
     import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes';
