@@ -1,13 +1,14 @@
 <script>
+    import {tags} from './stores.js';
 	import { onMount } from 'svelte';
 	import { addTag, listTags } from 'sql-tag-system-fetch-utils';
     import Tag from './Tag.svelte';
 
-    let tags = [];
     let newTag = '';
 
     async function getTags() {
-        tags = await listTags();
+        let list = await listTags();
+        $tags = list;
     }
 
     onMount(async () => {
@@ -24,7 +25,7 @@
                 if (tag) {
                     try {
                         let newTagId = await addTag(tag);
-                        tags = [...tags, { id:newTagId, tag:tag }];
+                        $tags = [...$tags, { id:newTagId, tag:tag }];
                     } catch(err) {
                         console.log(err);
                     }
@@ -40,7 +41,7 @@
         let page = 0;
 
         let additionalTags = await listTags(page, limit);
-        tags = [...tags, ...additionalTags];
+        $tags = [...$tags, ...additionalTags];
     }
 
 </script>
@@ -52,7 +53,9 @@
     </div>
 
     <div class="tag-container flex items-start content-start flex-wrap mt-3 mb-15 overflow-auto">
-        <Tag {tags}></Tag>
+        {#each $tags as tag}
+            <Tag {...tag}></Tag>
+        {/each}
     </div>
 
     <div class="fixed bottom-5 items-center w-screen flex justify-center items-center">
