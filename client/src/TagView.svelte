@@ -1,9 +1,9 @@
 <script>
-    import { addTag } from "sql-tag-system-fetch-utils";
-    import { faPlusCircle } from '@fortawesome/free-solid-svg-icons/faPlusCircle';
-    import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes';
+    import {addTag} from "sql-tag-system-fetch-utils";
+    import {faPlusCircle} from '@fortawesome/free-solid-svg-icons/faPlusCircle';
+    import {faTimes} from '@fortawesome/free-solid-svg-icons/faTimes';
     import Icon from 'fa-svelte';
-    import { tags } from './stores';
+    import {tags} from './stores';
 
     let addingTag = false;
     let newTag = '';
@@ -30,31 +30,33 @@
                 if (tag) {
                     try {
                         let newTagId = await addTag(tag);
-                        $tags = [{ id:newTagId, tag:tag }, ...$tags];
-                    } catch(err) {
+                        $tags = [{id: newTagId, tag: tag}, ...$tags];
+                    } catch (err) {
                         console.log(err);
                     }
                 }
             }
 
             newTag = '';
+            addingTag = false;
         }
     }
 </script>
 
 <svelte:window on:keydown={handleKeydown}/>
 
-<div>
-    {#if addingTag}
-        <div class="p-1 m-2 bg-gray-300 rounded-2xl focus:outline-none w-80 flex justify-center items-center">
-            <input class="bg-gray-300 rounded-2xl focus:outline-none w-72 border-none" bind:value={newTag} placeholder="separate tags with commas">
-            <div class="inline-flex justify-center items-center bg-gray-300" on:click={() => { newTag = ''; addingTag = false; }} >
-                <Icon icon={faTimes}></Icon>
-            </div>
+{#if addingTag}
+    <div class="p-1 m-2 bg-gray-300 rounded-2xl focus:outline-none w-80 flex justify-center items-center">
+        <input class="bg-gray-300 rounded-2xl focus:outline-none w-72 border-none pl-1" bind:value={newTag}
+               placeholder="separate tags with commas">
+        <div class="inline-flex justify-center items-center bg-gray-300 rounded-full w-6 h-6 hover:bg-gray-200"
+             on:click={() => { newTag = ''; addingTag = false; }}>
+            <Icon icon={faTimes}></Icon>
         </div>
-    {:else}
-        <div on:click={() => { addingTag = true }} class="flex m-2 bg-gray-300 rounded-full h-8 w-8 justify-center items-center">
-            <Icon class="text-2xl" icon={faPlusCircle}></Icon>
-        </div>
-    {/if}
-</div>
+    </div>
+{:else}
+    <div on:click={() => { addingTag = true }}
+         class="flex m-2 bg-gray-300 rounded-full h-8 w-8 justify-center items-center">
+        <Icon class="text-2xl" icon={faPlusCircle}></Icon>
+    </div>
+{/if}
