@@ -1,5 +1,5 @@
 <script>
-    import {tags} from './stores.js';
+    import {tags, limit, page} from './stores.js';
     import {onMount} from 'svelte';
     import {listTags} from 'sql-tag-system-fetch-utils';
     import Tag from './Tag.svelte';
@@ -15,16 +15,15 @@
     });
 
     async function handleLoadMore() {
-        let limit = 100;
-        let page = 0;
+        $page++;
 
-        let additionalTags = await listTags(page, limit);
+        let additionalTags = await listTags($page, $limit);
         $tags = [...$tags, ...additionalTags];
     }
 
 </script>
 
-<div class="tag-container flex items-start content-start flex-wrap mt-3 mb-15 overflow-auto">
+<div class="tag-container flex items-start content-start flex-wrap overflow-auto">
     <TagView></TagView>
     {#each $tags as tag}
         <Tag {...tag}></Tag>

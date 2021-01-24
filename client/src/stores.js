@@ -1,3 +1,5 @@
 import { writable } from 'svelte/store';
 
-export let tags = writable([]);
+export const tags = writable([]);
+export const limit = writable(100);
+export const page = writable(0);
