@@ -7,21 +7,20 @@
 
     let addingTag = false;
     let newTag = '';
-    let key;
 
     async function handleKeydown(event) {
-        key = event.key;
+        const {key} = event;
 
-        if (key == 'Enter') {
+        if (key === 'Enter') {
             await handleAdd();
-        } else if (key == 'Escape') {
+        } else if (key === 'Escape') {
             newTag = '';
             addingTag = false;
         }
     }
 
     async function handleAdd() {
-        if (newTag != '') {
+        if (newTag) {
             let newTags = newTag.split(",");
 
             for (let tag of newTags) {

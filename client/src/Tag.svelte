@@ -9,8 +9,12 @@
     export let tag;
 
     async function handleDelete(tagId) {
-        await deleteTag(tagId);
-        $tags = $tags.filter(tag => tag.id !== tagId);
+        try {
+            await deleteTag(tagId);
+            $tags = $tags.filter(tag => tag.id !== tagId);
+        } catch (err) {
+            console.log(err);
+        }
     }
 
 </script>

@@ -64,7 +64,3 @@ button:active {
 button:focus {
 	border-color: #666;
 }
-
-.tag-container {
-	height: 900px;
-}

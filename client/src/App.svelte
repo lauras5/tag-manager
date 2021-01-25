@@ -5,19 +5,14 @@
     import Tag from './Tag.svelte';
     import TagView from './TagView.svelte';
 
-    async function getTags() {
-        let list = await listTags();
-        $tags = list;
-    }
-
     onMount(async () => {
-        await getTags();
+        $tags = await listTags($page, $limit);
     });
 
     async function handleLoadMore() {
         $page++;
 
-        let additionalTags = await listTags($page, $limit);
+        const additionalTags = await listTags($page, $limit);
         $tags = [...$tags, ...additionalTags];
     }
 
@@ -34,3 +29,8 @@
     <button class="w-48 bg-blue-300 p-1 rounded-2xl focus:outline-none" on:click={handleLoadMore}>Load More</button>
 </div>
 
+<style>
+    .tag-container {
+        height: 100%;
+    }
+</style>
