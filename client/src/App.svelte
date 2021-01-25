@@ -10,9 +10,7 @@
     });
 
     async function handleLoadMore() {
-        $page++;
-
-        const additionalTags = await listTags($page, $limit);
+        const additionalTags = await listTags(++$page, $limit);
         $tags = [...$tags, ...additionalTags];
     }
 
