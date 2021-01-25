@@ -6,13 +6,15 @@
     import TagView from './TagView.svelte';
 
     onMount(async () => {
-        $tags = await listTags($page, $limit);
+        try {
+            $tags = await listTags($page, $limit);
+        } catch(err) {
+            console.log(err)
+        }
     });
 
     async function handleLoadMore() {
-        $page++;
-
-        const additionalTags = await listTags($page, $limit);
+        const additionalTags = await listTags(++$page, $limit);
         $tags = [...$tags, ...additionalTags];
     }
 
