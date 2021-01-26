@@ -15,25 +15,25 @@
     "@almaclaine/error-utils" "^0.0.2"
     cross-fetch "^3.0.6"
 
-"@almaclaine/general-utils@^0.0.16":
-  version "0.0.16"
-  resolved "https://registry.yarnpkg.com/@almaclaine/general-utils/-/general-utils-0.0.16.tgz#f3deaffa5cfdb39e8055b5095d6dc3b787c46c39"
-  integrity sha512-vaCA5byKQfm9H10bWpFyZMD2GDnTVLm3frIWYnzckxJsOU/IPuGYxXmyRs4R3l917Zqkpy9ybYY91JmbsCoYfw==
+"@almaclaine/general-utils@^0.0.18":
+  version "0.0.18"
+  resolved "https://registry.yarnpkg.com/@almaclaine/general-utils/-/general-utils-0.0.18.tgz#b712c45c68e5f9a80c94d3f0cafe4a483134956c"
+  integrity sha512-ligvta7ADXMHFaBNs4uOW4V4MUrWygOMWcunLmJWulw10/GbjNaarUo+NNUwS0olDHcoU3dCRqnPa1DJKOEVWg==
   dependencies:
     "@almaclaine/error-utils" "^0.0.2"
 
-"@almaclaine/koa-utils@^0.0.22":
-  version "0.0.22"
-  resolved "https://registry.yarnpkg.com/@almaclaine/koa-utils/-/koa-utils-0.0.22.tgz#6a0bbef4e864245452a46eedd84cda6c4143d4f1"
-  integrity sha512-9KibRUzULx+ZXvTZahRljrr99OBOr/j1AGZTpFBvEWpeGu402U8FYPNYkVqmT/YHcbGZEQTT9GlvQOEo1DrjcQ==
+"@almaclaine/koa-utils@^0.0.24":
+  version "0.0.24"
+  resolved "https://registry.yarnpkg.com/@almaclaine/koa-utils/-/koa-utils-0.0.24.tgz#b8a3ad7b9156c8c3797f4e4b0cdc2166fa83b357"
+  integrity sha512-GVBoPI+F+E/oLhpa5ska+WMoI7SruzzNWLbYm4rqJnWQ7eUXK4D6YZmdBN/0e7ic7HYZLUN6ygZYzuGkJOtzuQ==
   dependencies:
-    "@almaclaine/general-utils" "^0.0.16"
+    "@almaclaine/general-utils" "^0.0.18"
     email-validator "^2.0.4"
 
-"@almaclaine/mysql-utils@^0.1.24":
-  version "0.1.31"
-  resolved "https://registry.yarnpkg.com/@almaclaine/mysql-utils/-/mysql-utils-0.1.31.tgz#2f1899723793d7cfe784c0b4a7b6d72170168859"
-  integrity sha512-aXjeIxAgXUDZ9x7znlzHk4SkM+UvD2sxLUunV4At0DHK5E8EottMFQzsdIzx6vvU1/rqZVCxTcElrjFLWewBuQ==
+"@almaclaine/mysql-utils@0.1.35", "@almaclaine/mysql-utils@^0.1.35":
+  version "0.1.35"
+  resolved "https://registry.yarnpkg.com/@almaclaine/mysql-utils/-/mysql-utils-0.1.35.tgz#2a2d2546154cbda5082d7b61b15ba4261bcd2670"
+  integrity sha512-/LxniPzY0yc4J0eZa3ahH8geNAY9NXER0/iCl+FCaxE3ZQkTz4wwbYgv5C+nAfNEuFJv9osSH7eGlRAwAju1Rg==
   dependencies:
     "@almaclaine/error-utils" "^0.0.2"
     mysql2 "^2.2.5"
@@ -816,31 +816,31 @@ spdx-license-ids@^3.0.0:
   resolved "https://registry.yarnpkg.com/spdx-license-ids/-/spdx-license-ids-3.0.7.tgz#e9c18a410e5ed7e12442a549fbd8afa767038d65"
   integrity sha512-U+MTEOO0AiDzxwFvoa4JVnMV6mZlJKk2sBLt90s7G0Gd0Mlknc7kxEn3nuDPNZRta7O2uy8oLcZLVT+4sqNZHQ==
 
-sql-tag-system-fetch-utils@^0.0.9:
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/sql-tag-system-fetch-utils/-/sql-tag-system-fetch-utils-0.0.9.tgz#13fc40b0fdb0c82d5892c2699cc0672ff180b484"
-  integrity sha512-S87S7tZd8egtLAfC2MMqrNp9Ee7fcNELyWMxSOGbD3ANll8q/tuquffVltDFlPMos7b3mxugydNw+4DNkncl4w==
+sql-tag-system-fetch-utils@^0.0.13:
+  version "0.0.13"
+  resolved "https://registry.yarnpkg.com/sql-tag-system-fetch-utils/-/sql-tag-system-fetch-utils-0.0.13.tgz#472ad82cee97fb9d36b345ce2f5485db0ac61a8f"
+  integrity sha512-7ZNcfuu6zKUTpIQ91ThiXPcVSI9bb7yE0pd4G8+5wP/t6Jjwe3OCZmSuMJyrpZjr0NYYjtjfn1N2ba7brPrS8g==
   dependencies:
     "@almaclaine/fetch-utils" "^0.0.6"
-    sql-tag-system "^0.0.14"
+    sql-tag-system "^0.0.18"
 
-sql-tag-system-koa-route@^0.0.14:
-  version "0.0.14"
-  resolved "https://registry.yarnpkg.com/sql-tag-system-koa-route/-/sql-tag-system-koa-route-0.0.14.tgz#88ad7e4557156f9bcc9ab46921c36eb106c05862"
-  integrity sha512-/vAMKh7ja81TsOdjUAC/HdAxOfeb40M95Fr0UsAkOTzy27ahZnvu2hXf5M28b3YswEFA0/AZhc6+Wg4ELK+jAg==
+sql-tag-system-koa-route@^0.0.18:
+  version "0.0.18"
+  resolved "https://registry.yarnpkg.com/sql-tag-system-koa-route/-/sql-tag-system-koa-route-0.0.18.tgz#391a7f8c6e602482b1b140ddeb6cc70591c12547"
+  integrity sha512-/KGlOdhBdHTcKBUGF8M4RO+xP5E6ZZ2VkDGeG96jHeEsXIIs0aa3mogSmS3xHGlkwYeBwn2tOtIwbA3qmjdaaw==
   dependencies:
-    "@almaclaine/koa-utils" "^0.0.22"
+    "@almaclaine/koa-utils" "^0.0.24"
     "@koa/router" "^10.0.0"
     koa-compose "^4.1.0"
-    sql-tag-system "^0.0.14"
+    sql-tag-system "^0.0.18"
 
-sql-tag-system@^0.0.14:
-  version "0.0.14"
-  resolved "https://registry.yarnpkg.com/sql-tag-system/-/sql-tag-system-0.0.14.tgz#aaf96b8f9f90812ee478d232adb73849ae809c9f"
-  integrity sha512-ztpLUvaexAzK3ZD7CTmiWuE8HCCkCMB3qIpzCacMsNi3M8Ln34xYwrKNAtPzkO8ayPqpjKhqr6uCsoJNFhAKVg==
+sql-tag-system@0.0.18, sql-tag-system@^0.0.18:
+  version "0.0.18"
+  resolved "https://registry.yarnpkg.com/sql-tag-system/-/sql-tag-system-0.0.18.tgz#a5f9cc9c9e36f0ea5d48dd6375bd43b38c3f252c"
+  integrity sha512-oqOlVQx8ljVIeI1TZ5Cv9fhs+I1woP57wGS1SdX3NsRcTwiotvdC5MWYtIMxAhF+/YzwWKhijvvH2c9Zia9p+A==
   dependencies:
-    "@almaclaine/general-utils" "^0.0.16"
-    "@almaclaine/mysql-utils" "^0.1.24"
+    "@almaclaine/general-utils" "^0.0.18"
+    "@almaclaine/mysql-utils" "^0.1.35"
 
 sqlstring@^2.3.2:
   version "2.3.2"
