@@ -20,6 +20,8 @@
     }
 
     async function handleAdd() {
+        let newTagList = [];
+
         if (newTag) {
             let newTags = newTag.split(",");
 
@@ -29,12 +31,14 @@
                 if (tag) {
                     try {
                         let newTagId = await addTag(tag);
-                        $tags = [{id: newTagId, tag: tag}, ...$tags];
+                        newTagList.push({id: newTagId, tag: tag});
                     } catch (err) {
                         console.log(err);
                     }
                 }
             }
+
+            $tags = [...newTagList, ...$tags];
 
             newTag = '';
             addingTag = false;
