@@ -1,38 +1,28 @@
 <script>
-	import {onMount} from 'svelte';
+    import {tags, limit, page} from './stores.js';
+    import {onMount} from 'svelte';
+    import {listTags} from 'sql-tag-system-fetch-utils';
+    import TagComponent from './TagComponent.svelte';
 
-	async function addTag(tag) {
-	    const res = await fetch(`/api/tag?tag=${tag}` , {method: 'post'});
-	    const {id} = await res.json();
-        return id;
+    onMount(async () => {
+        try {
+            console.log(await listTags($page, $limit))
+            $tags = await listTags($page, $limit);
+        } catch (err) {
+            console.log(err)
+        }
+    });
+
+    async function handleLoadMore() {
+        const additionalTags = await listTags(++$page, $limit);
+        $tags = [...$tags, ...additionalTags];
     }
-
-    async function getTag(id) {
-        const res = await fetch(`/api/tag?id=${id}`);
-        return await res.json();
-    }
-
-    async function listTags() {
-        const res = await fetch('/api/tag');
-        return await res.json();
-    }
-
-    async function deleteTag(id) {
-        const res = await fetch(`/api/tag?id=${id}`, {method: 'delete'});
-        return await res.json();
-    }
-
-	onMount(async () => {
-
-	});
-
 
 </script>
 
-<style>
-	h1 {
-		color: purple;
-	}
-</style>
+<TagComponent></TagComponent>
 
-<h1>Hello world!</h1>
+<div class="fixed bottom-5 items-center w-screen flex justify-center items-center">
+    <button class="w-48 bg-blue-300 p-1 rounded-2xl focus:outline-none" on:click={handleLoadMore}>Load More</button>
+</div>
+
